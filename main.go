@@ -19,6 +19,12 @@ func main() {
 
 	router(app)
 
-	log.Fatal(app.Listen(":" + os.Getenv("PortServer")))
+	port := os.Getenv("PortServer")
+
+	if port == "" {
+		port = "1001"
+	}
+
+	log.Fatal(app.Listen(":" + port))
 
 }

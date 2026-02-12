@@ -11,15 +11,20 @@ func ImageController(c *fiber.Ctx) error {
 
 	option := c.Params("option")
 
+	if value == "" {
+		return c.Status(fiber.StatusBadRequest).SendString("El parámetro 'nombre' es obligatorio")
+	}
+
 	switch option {
 	case "avatar":
-	case "logo":
-
-		if value == "" {
-			return c.Status(fiber.StatusBadRequest).SendString("El parámetro 'nombre' es obligatorio")
-		}
 
 		file = CreateAvatar(value)
+
+		c.Set("Content-Type", "image/svg+xml")
+
+	case "logo":
+
+		file = CreateInitial(value)
 
 		c.Set("Content-Type", "image/svg+xml")
 

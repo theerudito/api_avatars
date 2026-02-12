@@ -10,7 +10,7 @@ import (
 func router(app *fiber.App) {
 
 	allowedOrigins := map[string]bool{
-		"http://localhost:5173": true,
+		"http://192.168.3.16:2001": true,
 	}
 
 	app.Use(cors.New(cors.Config{

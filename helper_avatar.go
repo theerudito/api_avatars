@@ -5,7 +5,6 @@ import (
 	"strings"
 )
 
-
 func CreateAvatar(name string) []byte {
 
 	h := fnv.New32a()
